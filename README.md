@@ -33,6 +33,12 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 `/usr/bin/mysqladmin -u root password 'root123'`
 
+`cat /etc/mysql/debian.cnf # view debian password, suppose its MPxBDvZrJKq99eJS` 
+
+`mysql -u root -p`
+
+`GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'MPxBDvZrJKq99eJS';`
+
 `service mysql start`
 
 9) Exit docker container, and verify your owncloud data exists on local volume folder: `ls -la /mnt/HD/HD_a2/owncloud_www/`. It should display: `drwxr-xr-x   13 33       33            4096 Sep 16 23:55 owncloud`, or `drwxr-xr-x 13 www-data www-data 4096 Sep 17 02:55 owncloud`
