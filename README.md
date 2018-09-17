@@ -28,6 +28,13 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 8) Enter docker container (docker exec ..... /bin/bash), go to `/var/www` folder and download owncloud: `cd /var/www && wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C .`  setup permissions too: `chown -R www-data:www-data owncloud`
 
+8.1) The mysql should have been destroyed too because of the data container volume... so, to rebuild it:
+`mysql_install_db --user=mysql --ldata=/var/lib/mysql`
+
+`/usr/bin/mysqladmin -u root password 'root123'`
+
+`service mysql start`
+
 9) Exit docker container, and verify your owncloud data exists on local volume folder: `ls -la /mnt/HD/HD_a2/owncloud_www/`. It should display: `drwxr-xr-x   13 33       33            4096 Sep 16 23:55 owncloud`, or `drwxr-xr-x 13 www-data www-data 4096 Sep 17 02:55 owncloud`
 
 10) Go to your home system, suppose MyCloud is running at 192.168.1.102, so you can find owncloud at 192.168.1.102:8000. Create an admin password and select MariaDB. Default user can be root, password root123, database ownclouddb. Database is not being kept on volume for now, so take care of not destroying the database and container (this should be improved in the future).
