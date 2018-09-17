@@ -28,6 +28,17 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 10) Go to your home system, suppose MyCloud is running at 192.168.1.102, so you can find owncloud at 192.168.1.102:8000. Create an admin password and select MariaDB. Default user can be root, password root123, database ownclouddb. Database is not being kept on volume for now, so take care of not destroying the database and container (this should be improved in the future).
 
+## Configuring OpenVPN (testing)
+
+1) Select a volume name for the openvpn data: `OVPN_DATA="ovpn-data"`
+
+2) Create the data volume container: `docker create --name $OVPN_DATA -v /mnt/HD/HD_a2/openvpn_data:/etc/openvpn hypriot/armhf-busybox`
+
+3) Create a public domain server. I'm using no-ip.com service, selected name `xxxx.ddns.net`
+
+4) Run config openvpn: `docker run --volumes-from $OVPN_DATA --rm evolvedm/openvpn-rpi ovpn_genconfig -u udp://xxxx.ddns.net`
+
+
 
 Read about docker at http://docker.com
 
