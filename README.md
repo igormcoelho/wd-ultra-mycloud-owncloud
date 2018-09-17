@@ -16,11 +16,15 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 4.1) Create a data volume container for your data: `docker create -v /mnt/HD/HD_a2/owncloud_www:/var/www/ --name owncloud_www resin/rpi-raspbian:latest`
 
+4.2) Create a data volume container for your mysql data: `docker create -v /mnt/HD/HD_a2/mysql_data:/var/lib/mysql --name mysql_data resin/rpi-raspbian:latest`
+
+
 5) Download these Dockerfile and configurations (I used wget for this). I put these in a folder `new_owncloud_docker`, but it doesn't matter.
 
 6) Build Dockerfile (mine is slightly the same as the original): `docker build -t comzone/rpi-owncloud:latest .`
 
-7) Run owncloud daemon: `docker run --restart=always --volumes-from owncloud_www -d -i -t -p 4430:443 -p 8000:80 comzone/rpi-owncloud`
+7) Run owncloud daemon: `docker run --restart=always --volumes-from owncloud_www --volumes-from mysql_data -d -i
+ -t -p 4430:443 -p 8000:80 comzone/rpi-owncloud`
 
 8) Enter docker container (docker exec ..... /bin/bash), go to `/var/www` folder and download owncloud: `cd /var/www && wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C .`  setup permissions too: `chown -R www-data:www-data owncloud`
 
