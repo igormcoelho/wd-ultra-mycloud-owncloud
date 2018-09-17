@@ -20,7 +20,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 6) Build Dockerfile (mine is slightly the same as the original): `docker build -t comzone/rpi-owncloud:latest .`
 
-7) Run owncloud daemon: `docker run --volumes-from owncloud_www -d -i -t -p 4430:443 -p 8000:80 comzone/rpi-owncloud`
+7) Run owncloud daemon: `docker run --restart=always --volumes-from owncloud_www -d -i -t -p 4430:443 -p 8000:80 comzone/rpi-owncloud`
 
 8) Enter docker container (docker exec ..... /bin/bash), go to `/var/www` folder and download owncloud: `cd /var/www && wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C .`  setup permissions too: `chown -R www-data:www-data owncloud`
 
