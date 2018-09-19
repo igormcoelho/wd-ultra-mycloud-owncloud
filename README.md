@@ -51,7 +51,8 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 2) Log-in to no-ip and register your dynamic domain. On the NAS device (via SSH), create a file on mounted disk `/mnt/HD/HD_a2/noipupdater/noipupdater.sh`, and create auxiliary folders `noipupdater/configdir` and `noipupdater/logdir`. Example is here: `https://raw.githubusercontent.com/AntonioCS/no-ip.com-bash-updater`. Use encoded email and password (x@gmail.com => x%40gmail.com), this may be useful: `https://meyerweb.com/eric/tools/dencoder/`
 
-3) ...
+3) Add execution permission `chmod +x /mnt/HD/HD_a2/noipupdater/noipupdater.sh` and add line to `crontab -e`: `*/15 * * * * /mnt/HD/HD_a2/noipupdater/noipupdater.sh` . It will refresh IP after 15 minutes, and only submit DNS request if IP changes.
+
 
 ## Configuring OpenVPN (testing)
 
