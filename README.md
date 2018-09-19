@@ -57,6 +57,8 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 5) Enter docker container and edit `/etc/apache2/apache2.conf`, adding `ServerName xxx.ddns.net`. For this to work, `start.sh` script must also use `xxx.ddns.net` instead of `$(hostname)`, to generate a correct ssl certificate
 
+6) Forward port 8000 and 4430 to your NAS server, from your router
+
 ## Configuring OpenVPN (testing)
 
 1) Select a volume name for the openvpn data: `OVPN_DATA="ovpn-data"`
@@ -67,6 +69,10 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 4) Run config openvpn: `docker run --volumes-from $OVPN_DATA --rm evolvedm/openvpn-rpi ovpn_genconfig -u udp://xxxx.ddns.net`
 
+
+## future advices
+
+Perhaps it was nice to have a volume also for apache certificates...
 
 
 Read about docker at http://docker.com
