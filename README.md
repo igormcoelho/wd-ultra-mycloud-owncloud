@@ -39,6 +39,8 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 `service mysql start`
 
+7.2) Maybe you will need to `chown -R mysql:mysql /var/lib/mysql` at some point, I don't know exactly now...
+
 8) Enter docker container (docker exec ..... /bin/bash), go to `/var/www` folder and download owncloud: `cd /var/www && wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C .`  setup permissions too: `chown -R www-data:www-data owncloud`
 
 9) Exit docker container, and verify your owncloud data exists on local volume folder: `ls -la /mnt/HD/HD_a2/owncloud_www/`. It should display: `drwxr-xr-x   13 33       33            4096 Sep 16 23:55 owncloud`, or `drwxr-xr-x 13 www-data www-data 4096 Sep 17 02:55 owncloud`
