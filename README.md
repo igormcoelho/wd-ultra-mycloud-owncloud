@@ -45,6 +45,14 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 10) Go to your home system, suppose MyCloud is running at 192.168.1.102, so you can find owncloud at 192.168.1.102:8000. Create an admin password and select MariaDB. Default user can be root, password root123, database ownclouddb. Database is not being kept on volume for now, so take care of not destroying the database and container (this should be improved in the future).
 
+## Configuring no-ip
+
+1) You need a router that supports NAT Lookback: http://opensimulator.org/wiki/NAT_Loopback_Routers My D-LINK DIR-809 router did not support, so I changed to a TP-LINK 740 that supports it.
+
+2) Log-in to no-ip and register your dynamic domain.
+
+3) ...
+
 ## Configuring OpenVPN (testing)
 
 1) Select a volume name for the openvpn data: `OVPN_DATA="ovpn-data"`
