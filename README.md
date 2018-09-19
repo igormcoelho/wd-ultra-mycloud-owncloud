@@ -26,9 +26,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 7) Run owncloud daemon: `docker run --restart=always --volumes-from owncloud_www --volumes-from mysql_data -d -i
  -t -p 4430:443 -p 8000:80 comzone/rpi-owncloud`
 
-8) Enter docker container (docker exec ..... /bin/bash), go to `/var/www` folder and download owncloud: `cd /var/www && wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C .`  setup permissions too: `chown -R www-data:www-data owncloud`
-
-8.1) The mysql should have been destroyed too because of the data container volume... so, to rebuild it:
+7.1) The mysql should have been destroyed too because of the data container volume... so, to rebuild it:
 `mysql_install_db --user=mysql --ldata=/var/lib/mysql`
 
 `/usr/bin/mysqladmin -u root password 'root123'`
@@ -40,6 +38,8 @@ These are the steps I have done to achieve that (please contribute if you think 
 `GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'MPxBDvZrJKq99eJS';`
 
 `service mysql start`
+
+8) Enter docker container (docker exec ..... /bin/bash), go to `/var/www` folder and download owncloud: `cd /var/www && wget -q -O - http://download.owncloud.org/community/owncloud-latest.tar.bz2 | tar jx -C .`  setup permissions too: `chown -R www-data:www-data owncloud`
 
 9) Exit docker container, and verify your owncloud data exists on local volume folder: `ls -la /mnt/HD/HD_a2/owncloud_www/`. It should display: `drwxr-xr-x   13 33       33            4096 Sep 16 23:55 owncloud`, or `drwxr-xr-x 13 www-data www-data 4096 Sep 17 02:55 owncloud`
 
