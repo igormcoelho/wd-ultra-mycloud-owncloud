@@ -49,7 +49,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 1) You need a router that supports NAT Lookback: http://opensimulator.org/wiki/NAT_Loopback_Routers My D-LINK DIR-809 router did not support, so I changed to a TP-LINK 740 that supports it.
 
-2) Log-in to no-ip and register your dynamic domain.
+2) Log-in to no-ip and register your dynamic domain. On the NAS device (via SSH), create a file on mounted disk `/mnt/HD/HD_a2/noipupdater/noipupdater.sh`, and create auxiliary folders `noipupdater/configdir` and `noipupdater/logdir`. Example is here: `https://raw.githubusercontent.com/AntonioCS/no-ip.com-bash-updater`. Use encoded email and password (@ => %40), this may be useful: `https://meyerweb.com/eric/tools/dencoder/`
 
 3) ...
 
