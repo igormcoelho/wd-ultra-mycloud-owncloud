@@ -53,6 +53,9 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 3) Add execution permission `chmod +x /mnt/HD/HD_a2/noipupdater/noipupdater.sh` and add line to `crontab -e`: `*/15 * * * * /mnt/HD/HD_a2/noipupdater/noipupdater.sh` . It will refresh IP after 15 minutes, and only submit DNS request if IP changes.
 
+4) Edit `vi owncloud_www/owncloud/config/config.php`, and add to `trusted_domains` : `1 => 'xxx.ddns.net:8000`, if your port is 800.
+
+
 
 ## Configuring OpenVPN (testing)
 
