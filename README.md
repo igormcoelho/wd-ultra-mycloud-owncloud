@@ -26,7 +26,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 7) Run owncloud daemon: `docker run --restart=always --volumes-from owncloud_www --volumes-from mysql_data -d -i
  -t -p 4430:443 -p 8000:80 comzone/rpi-owncloud`
 
-7.1) The mysql should have been destroyed too because of the data container volume... so, to rebuild it:
+7.1) Enter docker container (docker exec ..... /bin/bash). The mysql should have been destroyed too because of the data container volume... so, to rebuild it:
 `mysql_install_db --user=mysql --ldata=/var/lib/mysql`
 
 `/usr/bin/mysqladmin -u root password 'root123'`
