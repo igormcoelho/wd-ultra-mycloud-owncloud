@@ -55,7 +55,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 4) Edit `vi owncloud_www/owncloud/config/config.php`, and add to `trusted_domains` : `1 => 'xxx.ddns.net:8000`, if your port is 800.
 
-
+5) Enter docker container and edit `/etc/apache2/apache2.conf`, adding `ServerName xxx.ddns.net`. For this to work, `start.sh` script must also use `xxx.ddns.net` instead of `$(hostname)`, to generate a correct ssl certificate
 
 ## Configuring OpenVPN (testing)
 
