@@ -4,7 +4,7 @@
 if [ ! -f /etc/apache2/ssl/server.key ]; then
 	mkdir -p /etc/apache2/ssl
 	KEY=/etc/apache2/ssl/server.key
-	DOMAIN=$(hostname)
+	DOMAIN=$(hostname)  # YOU SHOULD PUT HERE YOUR xxx.ddns.net (noip) address, before starting all this!
 	export PASSPHRASE=$(head -c 128 /dev/urandom  | uuencode - | grep -v "^end" | tr "\n" "d")
 	SUBJ="
 C=UK
