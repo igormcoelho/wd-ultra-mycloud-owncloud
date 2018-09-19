@@ -72,8 +72,11 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 ## future advices
 
+Should have started from noip configuration first! So all scripts are already done correctly with noip server. I had to do it twice, first locally, then realized it wouldn't work in the outside world... must think on this before everything starts.
+
 Perhaps it was nice to have a volume also for apache certificates...
 
+## More information
 
 Read about docker at http://docker.com
 
