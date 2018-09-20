@@ -73,7 +73,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 ## Manually Adding Files do ownCloud
 
-If you want to add GigaBytes of files, please don't use sync, it will take years!! Use SSH or USB to copy your files directly to `/mnt/HD/.../owncloud_www/data/USERNAME/files/NEW_DIRECTORY`. To index these files, perform a `docker exec ... /bin/bash` into your container, and execute: `sudo -u www-data php occ files:scan --path "USERNAME/files/NEW_DIRECTORY"`
+If you want to add GigaBytes of files, please don't use sync, it will take years!! Use SSH or USB to copy your files directly to `/mnt/HD/.../owncloud_www/data/USERNAME/files/NEW_DIRECTORY`. To index these files, perform a `docker exec ... /bin/bash` into your container, and execute: `cd /var/www/owncloud`, `sudo -u www-data php occ files:scan --path "USERNAME/files/NEW_DIRECTORY"`
 
 ## future advices
 
