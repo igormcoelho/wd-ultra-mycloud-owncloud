@@ -71,6 +71,9 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 4) Run config openvpn: `docker run --volumes-from $OVPN_DATA --rm evolvedm/openvpn-rpi ovpn_genconfig -u udp://xxxx.ddns.net`
 
+## Manually Adding Files do ownCloud
+
+If you want to add GigaBytes of files, please don't use sync, it will take years!! Use SSH or USB to copy your files directly to `/mnt/HD/.../owncloud_www/data/USERNAME/files/NEW_DIRECTORY`. To index these files, perform a `docker exec ... /bin/bash` into your container, and execute: `sudo -u www-data php occ files:scan --path "USERNAME/files/NEW_DIRECTORY"`
 
 ## future advices
 
