@@ -82,6 +82,8 @@ https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_co
 
 5) `service redis-server start`
 
+6) Should manage some upstart if redis crashes... https://gist.github.com/bdotdub/714533 (TODO)
+
 ## Configuring OpenVPN (testing)
 
 1) Select a volume name for the openvpn data: `OVPN_DATA="ovpn-data"`
