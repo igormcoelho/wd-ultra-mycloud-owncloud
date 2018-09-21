@@ -61,6 +61,16 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 6) Forward port 8000 and 4430 to your NAS server, from your router
 
+## memcaching with redis 
+
+1) Enter server with `docker exec ... /bin/bash`
+
+2) `apt install redis-server php5-redis`
+
+3) `service redis-server start`
+
+4) configure...
+
 ## Configuring OpenVPN (testing)
 
 1) Select a volume name for the openvpn data: `OVPN_DATA="ovpn-data"`
