@@ -63,6 +63,8 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 ## memcaching with redis 
 
+https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_configuration.html#id4
+
 1) Enter server with `docker exec ... /bin/bash`
 
 2) `apt install redis-server php5-redis`
