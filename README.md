@@ -69,9 +69,18 @@ https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_co
 
 2) `apt install redis-server php5-redis`
 
-3) `service redis-server start`
+3) edit `/var/www/owncloud/config/config.php` and add:
+```
+   'memcache.locking' => '\OC\Memcache\Redis',
+   'memcache.local' => '\OC\Memcache\Redis',
+   'redis' => array(
+     'host' => 'localhost',
+     'port' => 6379,
+      ),
+```
+4) `service apache2 restart`
 
-4) configure...
+5) `service redis-server start`
 
 ## Configuring OpenVPN (testing)
 
