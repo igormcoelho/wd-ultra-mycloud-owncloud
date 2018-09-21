@@ -61,7 +61,7 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 6) Forward port 8000 and 4430 to your NAS server, from your router
 
-## memcaching with redis 
+## memcaching with redis (server becomes MUCH faster!!)
 
 https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_configuration.html#id4
 
@@ -78,11 +78,15 @@ https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_co
      'port' => 6379,
       ),
 ```
-4) `service apache2 restart`
+4) Edit `/etc/supervisor/conf.d/lamp.conf` and add:
+```
+[program:redis]
+command=/usr/bin/redis-server
+autorestart=true
+```
 
-5) `service redis-server start`
+5) Restart web server. The best way I found was: `pkill start.sh`. That killed my SSH session, but everything was restarted (I tried other ways, but didn't succeed in truly restarting all apache sessions).
 
-6) Should manage some upstart if redis crashes... https://gist.github.com/bdotdub/714533 (TODO)
 
 ## Configuring OpenVPN (testing)
 
