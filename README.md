@@ -114,6 +114,28 @@ Apache was consuming too much memory (I only have 1GB) and leaving a lot of work
 
 If you want to add GigaBytes of files, please don't use sync, it will take years!! Use SSH or USB to copy your files directly to `/mnt/HD/.../owncloud_www/data/USERNAME/files/NEW_DIRECTORY`. To index these files, perform a `docker exec ... /bin/bash` into your container, and execute: `cd /var/www/owncloud`, `sudo -u www-data php occ files:scan --path "USERNAME/files/NEW_DIRECTORY"`
 
+## setup Calendar (CalDav)
+
+Enter admin user and install Calendar app. Install some Android Calendar (such as SimpleCalendar) and Android CalDav connector (such as OpenSync).
+
+## setup Collabora Office ("Google Docs")
+
+First of all, that won't work in your MyCloud device, unfortunately... it seems the whole software is still not compatible with ARM (by 2018), it consumes several GB of RAM and occupies a lot of disk space. In the future, that may be compatible with Raspberry Pi, but for now, best thing is to install in on a 3rd party computer (it could be a Cloud Computer on DigitalOcean, for example).
+
+1) On x86_64 computer: `docker run -t -d -p 9980:9980 -e "domain=xxx.ddns.net" -e "cert_domain=xxx.ddns.net" -e "username=admin" -e "password=S3cRet" --restart always --cap-add MKNOD collabora/code`
+
+2) Wait a few minutes and try in this computer: `curl -v https://localhost:9980`. If answer is `OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to localhost:9980`, wait a little longer, until answer is: `curl: (60) SSL certificate problem: self signed certificate in certificate chain`
+
+3) Adjust your router to manage your domain and port 9980, then try `curl -v https://xxx.ddns.net:9980` on your MyCloud device.
+
+4) Install Collabora (richdocuments) with admin on owncloud, and configure domain: `nano /var/www/owncloud/apps/richdocuments/lib/appconfig.php` with `'wopi_url' => 'https://xxx.ddns.net:9980'` 
+
+5) Get self-signed certificate on x86_64 machine: `docker exec -it YOUR_CONTAINER cat /etc/loolwsd/ca-chain.cert.pem`
+
+6) Add certificate on owncloud docker: `nano /var/www/owncloud/resources/config/ca-bundle.crt`, go to last line and add the contents of the certificate from last step.
+
+7) Open owncloud Collabora (Rich Documents) in any user, and that should work.
+
 ## future advices
 
 Should have started from noip configuration first! So all scripts are already done correctly with noip server. I had to do it twice, first locally, then realized it wouldn't work in the outside world... must think on this before everything starts.
