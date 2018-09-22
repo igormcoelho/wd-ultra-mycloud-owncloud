@@ -140,7 +140,7 @@ First of all, that won't work in your MyCloud device, unfortunately... it seems 
 
 3.1) open `https://xxx.ddns.net:9980` on your browser and make sure you accept the self-signed certificate (works on Firefox, but not too good on Chrome... it would be better to have a lets encrypt certificate)
 
-4) Install Collabora (richdocuments) with admin on owncloud, and configure domain: `nano /var/www/owncloud/apps/richdocuments/lib/appconfig.php` with `'wopi_url' => 'https://xxx.ddns.net:9980'` 
+4) Install Collabora (richdocuments) with admin on owncloud. Go to Admin page, Additional, and configure domain: `https://xxx.ddns.net:9980'`. DO NOT EDIT MANUALLY: `nano /var/www/owncloud/apps/richdocuments/lib/appconfig.php`... that will bring integrity check problems. 
 
 5) Get self-signed certificate on x86_64 machine: `docker exec -it YOUR_CONTAINER cat /etc/loolwsd/ca-chain.cert.pem`
 
