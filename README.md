@@ -61,18 +61,18 @@ These are the steps I have done to achieve that (please contribute if you think 
 
 6) Forward port 8000 and 4430 to your NAS server, from your router
 
-## memcaching with redis (server becomes MUCH faster!!)
+## memcaching with apcu/redis (server becomes MUCH faster!!)
 
 https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_configuration.html#id4
 
 1) Enter server with `docker exec ... /bin/bash`
 
-2) `apt install redis-server php5-redis`
+2) `apt install redis-server php5-redis php5-apcu`
 
 3) edit `/var/www/owncloud/config/config.php` (using Redis/APCu)  and add:
 ```
-   'memcache.locking' => '\OC\Memcache\APCu',
-   'memcache.local' => '\OC\Memcache\Redis',
+   'memcache.locking' => '\OC\Memcache\Redis',
+   'memcache.local' => '\OC\Memcache\APCu',
    'redis' => array(
      'host' => 'localhost',
      'port' => 6379,
