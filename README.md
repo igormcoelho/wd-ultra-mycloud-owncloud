@@ -144,7 +144,7 @@ First of all, that won't work in your MyCloud device, unfortunately... it seems 
 
 5) Get self-signed certificate on x86_64 machine: `docker exec -it YOUR_CONTAINER cat /etc/loolwsd/ca-chain.cert.pem`
 
-6) Add certificate on owncloud docker: `nano /var/www/owncloud/resources/config/ca-bundle.crt`, go to last line and add the contents of the certificate from last step.
+6) Add certificate on owncloud docker: `nano /var/www/owncloud/resources/config/ca-bundle.crt`, go to last line and add the contents of the certificate from last step. THIS WILL BREAK integrity checks... so it's best to adopt a global lets encrypt certificate.
 
 7) Open owncloud Collabora (Rich Documents) in any user, and that should work.
 
