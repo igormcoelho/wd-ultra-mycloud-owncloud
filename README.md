@@ -89,7 +89,7 @@ autorestart=true
 
 ## limiting number of apache instances (MPM)
 
-Apache was consuming too much memory (I only have 1GB) and leaving a lot of work to SWAP. So, default MPM was giving too much instances on memory (around 13, each with 180MB), so I limited that. Edit `/etc/apache2/mods-enabled/mpm_prefork.conf`, my values are (around 8 servers now):
+Apache was consuming too much memory (I only have 1GB) and leaving a lot of work to SWAP (even my SSH sessions suddently got slow...). So, default MPM was giving too much instances on memory (around 13, each with 180MB), so I limited that. Edit `/etc/apache2/mods-enabled/mpm_prefork.conf`, my values are (around 8 servers now):
 ```
 <IfModule mpm_prefork_module>
 	StartServers	          3
