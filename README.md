@@ -61,9 +61,10 @@ These are the steps I have done to make ownCloud work successfully (please contr
 
 1) You need a router that supports NAT Lookback: http://opensimulator.org/wiki/NAT_Loopback_Routers My D-LINK DIR-809 router did not support, so I changed to a TP-LINK 740 that supports it.
 
-2) Log-in to no-ip and register your dynamic domain. On the NAS device (via SSH), create a file on mounted disk `/mnt/HD/HD_a2/noipupdater/noipupdater.sh`, and create auxiliary folders `noipupdater/configdir` and `noipupdater/logdir`. Example is here: `https://raw.githubusercontent.com/AntonioCS/no-ip.com-bash-updater`. Use encoded email and password (x@gmail.com => x%40gmail.com), this may be useful: `https://meyerweb.com/eric/tools/dencoder/`
+2) Log-in to no-ip and register your dynamic domain. On the NAS device (via SSH), create a file on docker container root `/noipupdater/noipupdater.sh`, and create auxiliary folders `noipupdater/configdir` and `noipupdater/logdir`. Example is here: `https://raw.githubusercontent.com/AntonioCS/no-ip.com-bash-updater`. Use encoded email and password (x@gmail.com => x%40gmail.com), this may be useful: `https://meyerweb.com/eric/tools/dencoder/`
 
-3) Add execution permission `chmod +x /mnt/HD/HD_a2/noipupdater/noipupdater.sh` and add line to `crontab -e`: `*/15 * * * * /mnt/HD/HD_a2/noipupdater/noipupdater.sh` . It will refresh IP after 15 minutes, and only submit DNS request if IP changes.
+3) Inside you docker owncloud container, `apt install cron`. Add execution permission `chmod +x /noipupdater/noipupdater.sh` and add line to `crontab -e`: `*/15 * * * * /noipupdater/noipupdater.sh` . It will refresh IP after 15 minutes, and only submit DNS request if IP changes.
+3.1) NEVER, NEVER try to edit MyCloud default XML file just to enter a native cronjob... I bricked my device this way! The native cronjob is volatile and hard to deal with, it's much easier to put that in your docker container that will be loaded automatically anyway ;)
 
 4) Edit `vi owncloud_www/owncloud/config/config.php`, and add to `trusted_domains` : `1 => 'xxx.ddns.net:8000`, if your port is 800.
 
