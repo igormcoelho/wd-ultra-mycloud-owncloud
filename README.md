@@ -69,9 +69,9 @@ https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_co
 
 2) `apt install redis-server php5-redis`
 
-3) edit `/var/www/owncloud/config/config.php` and add:
+3) edit `/var/www/owncloud/config/config.php` (using Redis  and add:
 ```
-   'memcache.locking' => '\OC\Memcache\Redis',
+   'memcache.locking' => '\OC\Memcache\APCu',
    'memcache.local' => '\OC\Memcache\Redis',
    'redis' => array(
      'host' => 'localhost',
