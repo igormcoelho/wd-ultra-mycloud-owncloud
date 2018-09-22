@@ -128,6 +128,8 @@ First of all, that won't work in your MyCloud device, unfortunately... it seems 
 
 3) Adjust your router to manage your domain and port 9980, then try `curl -v https://xxx.ddns.net:9980` on your MyCloud device.
 
+3.1) open `https://xxx.ddns.net:9980` on your browser and make sure you accept the self-signed certificate (works on Firefox, but not too good on Chrome... it would be better to have a lets encrypt certificate)
+
 4) Install Collabora (richdocuments) with admin on owncloud, and configure domain: `nano /var/www/owncloud/apps/richdocuments/lib/appconfig.php` with `'wopi_url' => 'https://xxx.ddns.net:9980'` 
 
 5) Get self-signed certificate on x86_64 machine: `docker exec -it YOUR_CONTAINER cat /etc/loolwsd/ca-chain.cert.pem`
