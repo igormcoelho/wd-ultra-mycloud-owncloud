@@ -87,6 +87,18 @@ autorestart=true
 
 5) Restart web server. The best way I found was: `pkill start.sh`. That killed my SSH session, but everything was restarted (I tried other ways, but didn't succeed in truly restarting all apache sessions).
 
+## limiting number of apache instances (MPM)
+
+Apache was consuming too much memory (I only have 1GB) and leaving a lot of work to SWAP. So, default MPM was giving too much instances on memory (around 13, each with 180MB), so I limited that. Edit `/etc/apache2/mods-enabled/mpm_prefork.conf`, my values are (around 8 servers now):
+```
+<IfModule mpm_prefork_module>
+	StartServers	          3
+	MinSpareServers		  3
+	MaxSpareServers		 5
+	MaxRequestWorkers	  100
+	MaxConnectionsPerChild   0
+</IfModule>
+```
 
 ## Configuring OpenVPN (testing)
 
