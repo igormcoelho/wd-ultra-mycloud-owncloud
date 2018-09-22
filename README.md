@@ -4,7 +4,17 @@ This project makes it possible to run OwnCloud on Docker on a Western Digital Ul
 
 This is a very experimental project and will certainly void your warranty on WD Ultra... but it is not intended to destroy your MyCloud, just to put OwnCloud working together (because it is an amazing software!).
 
-These are the steps I have done to achieve that (please contribute if you think it's not good enough!):
+## community steps (not tested)
+
+I just discovered WD community instructions to put owncloud and newer docker (I did with older docker version, so this one may be better steps... I didn't try!)
+
+https://community.wd.com/t/guide-owncloud-on-wd-my-cloud/227090
+
+https://community.wd.com/t/package-docker-v18-03-1-ce-for-wd-my-cloud/222305/2
+
+## my installation (tested!)
+
+These are the steps I have done to make ownCloud work successfully (please contribute if you think it's not good enough!):
 
 1) setup your MyCloud normally (including RAID), and log-in via SSH to your WD Ultra (mine is precisely WD My Cloud EX2 Ultra)
 
