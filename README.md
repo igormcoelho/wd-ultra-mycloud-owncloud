@@ -90,6 +90,8 @@ https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/caching_co
      'port' => 6379,
       ),
 ```
+3.1) UPDATE. My redis server keeps crashing (after 40 minutes or on heavy loads), with random messages (Uncaught exception 'RedisException' with message 'Connection lost'), or just segmentation faults. Perhaps my configuration is not good, so I'm using APCu for both caches (for now).
+
 4) Edit `/etc/supervisor/conf.d/lamp.conf` and add:
 ```
 [program:redis]
