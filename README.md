@@ -177,3 +177,6 @@ This project is inspired by:
 git://github.com/comzone/rpi-owncloud.git
 http://dischord.org/2013/07/10/docker-and-owncloud/
 http://dischord.org/2013/08/13/docker-and-owncloud-part-2/
+
+https://medium.com/@igormcoelho/how-i-almost-got-rid-of-google-in-my-life-1e347b69cbfd
+
