@@ -1,3 +1,3 @@
 #!/bin/bash
-docker run --restart=always -d -i -t docker-noip
+docker run --privileged=true --restart=always -d -i -t docker-noip
 
