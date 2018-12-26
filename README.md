@@ -12,6 +12,15 @@ https://community.wd.com/t/guide-owncloud-on-wd-my-cloud/227090
 
 https://community.wd.com/t/package-docker-v18-03-1-ce-for-wd-my-cloud/222305/2
 
+Install docker from WDCommunity. Install entware from WDCommunity.
+
+opkg install python-pip
+
+pip install --upgrade setuptools
+
+pip install setuptools docker-compose
+
+
 ## my installation (tested!)
 
 These are the steps I have done to make ownCloud work successfully (please contribute if you think it's not good enough!):
