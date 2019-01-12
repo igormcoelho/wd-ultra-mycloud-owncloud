@@ -172,6 +172,15 @@ First of all, that won't work in your MyCloud device, unfortunately... it seems 
 
 7) Open owncloud Collabora (Rich Documents) in any user, and that should work.
 
+## install local sync for desktop and Android/LineageOS
+```
+#sync client
+sudo apt install owncloud-client
+#nautilus integration
+sudo apt install owncloud-client-nautilus
+```
+For Android (or LineageOS) install owncloud app (it's paid, but less than a dollar). Also install FolderSync app to sync specific smartphone folders.
+
 ## future advices
 
 Should have started from noip configuration first! So all scripts are already done correctly with noip server. I had to do it twice, first locally, then realized it wouldn't work in the outside world... must think on this before everything starts.
