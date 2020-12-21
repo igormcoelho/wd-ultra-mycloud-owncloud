@@ -138,6 +138,23 @@ Apache was consuming too much memory (I only have 1GB) and leaving a lot of work
 
 4) Run config openvpn: `docker run --volumes-from $OVPN_DATA --rm evolvedm/openvpn-rpi ovpn_genconfig -u udp://xxxx.ddns.net`
 
+## OpenVPN - second try
+
+Steps from: https://github.com/olivierguerriat/rpi-docker-openvpn
+
+`docker run -v /mnt/HD/HD_a2/$OVPN_DATA:/etc/openvpn -d -p 1194:1194/udp --cap-add=NET_ADMIN --name $OVPN_DATA mjenz/rpi-openvpn`
+
+`docker run -v /mnt/HD/HD_a2/$OVPN_DATA:/etc/openvpn --rm -it arm32v6/alpine vi /etc/openvpn/openvpn.conf`
+
+-> Add this with vi: 
+        `push "dhcp-option DNS 192.168.1.1"`
+        
+`docker create --name ovpn-rpi-mjenz -v /mnt/HD/HD_a2/ovpn-data:/etc/openvpn mjenz/rpi-openvpn`
+
+`docker run -v /mnt/HD/HD_a2/$OVPN_DATA:/etc/openvpn --rm mjenz/rpi-openvpn ovpn_genconfig -u udp://xxxxx.ddns.net`
+  
+`docker run -v /mnt/HD/HD_a2/$OVPN_DATA:/etc/openvpn --rm -it mjenz/rpi-openvpn ovpn_initpki`  
+
 ## Manually Adding Files do ownCloud
 
 If you want to add GigaBytes of files, please don't use sync, it will take years!! Use SSH or USB to copy your files directly to `/mnt/HD/.../owncloud_www/data/USERNAME/files/NEW_DIRECTORY`. To index these files, perform a `docker exec ... /bin/bash` into your container, and execute: `cd /var/www/owncloud`, `sudo -u www-data php occ files:scan --path "USERNAME/files/NEW_DIRECTORY"`
